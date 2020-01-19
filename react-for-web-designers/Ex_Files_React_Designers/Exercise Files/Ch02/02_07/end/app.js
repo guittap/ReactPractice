@@ -23,9 +23,7 @@
   }
 
   function ProductImage(props) {
-    return (
-      <img src={`../../../assets/${props.color}.jpg`} alt="Product Image" />
-    );
+    return <img src={`../../../assets/${props.color}.jpg`} alt="Product Image" />;
   }
 
   var ProductCustomizer = createReactClass({
@@ -33,7 +31,7 @@
       var sizes = window.Inventory.allSizes;
 
       return {
-        color: "red",
+        color: "green",
         size: 8,
         sizes: sizes
       };
