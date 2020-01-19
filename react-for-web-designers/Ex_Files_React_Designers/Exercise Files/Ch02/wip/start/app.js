@@ -1,13 +1,27 @@
 (function() {
   "use strict";
 
-  // Start here
+  function ProductImage(props) {
+    return React.createElement("img", {
+      src: "../../../assets/red.jpg",
+      alt: "Product image"
+    });
+  }
 
-  const ProductCostomizer = React.createElement(
-    "div",
-    { className: "cumstomizer" },
-    "Product customizer will go here"
+  function ProductCostomizer(props) {
+    return React.createElement(
+      "div",
+      { className: "cumstomizer" },
+      React.createElement(
+        "div",
+        { className: "product-image" },
+        React.createElement(ProductImage)
+      )
+    );
+  }
+
+  ReactDOM.render(
+    React.createElement(ProductCostomizer),
+    document.getElementById("react-root")
   );
-
-  ReactDOM.render(ProductCostomizer, document.getElementById("react-root"));
 })();
