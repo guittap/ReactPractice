@@ -41,10 +41,18 @@
       });
     }
 
+    function onColorChange(evt) {
+      props.handleColorChange(evt.target.value);
+    }
+
     return (
       <div className="field-group">
         <label htmlFor="color-options">Color:</label>
-        <select defaultValue={props.color} name="colorOptions" id="color-options">
+        <select
+          defaultValue={props.color}
+          name="colorOptions"
+          id="color-options"
+          onChange={onColorChange}>
           {colorOptions()}
         </select>
       </div>
@@ -78,6 +86,17 @@
       });
     },
 
+    handleColorChange: function(selectedColor) {
+      console.log("parent handleSizeChange", selectedColor);
+
+      const availableSizes = window.Inventory.byColor[selectedColor];
+
+      this.setState({
+        color: selectedColor,
+        sizes: availableSizes
+      });
+    },
+
     render: function() {
       return (
         <div className="customizer">
@@ -90,7 +109,11 @@
               sizes={this.state.sizes}
               handleSizeChange={this.handleSizeChange}
             />
-            <ColorSelector color={this.state.color} colors={this.state.colors} />
+            <ColorSelector
+              color={this.state.color}
+              colors={this.state.colors}
+              handleColorChange={this.handleColorChange}
+            />
           </div>
         </div>
       );
